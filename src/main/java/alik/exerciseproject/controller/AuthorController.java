@@ -1,11 +1,14 @@
 package alik.exerciseproject.controller;
 
+import alik.exerciseproject.dto.AuthorDTO;
 import alik.exerciseproject.model.Author;
 import alik.exerciseproject.service.AuthorService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -18,8 +21,8 @@ public class AuthorController {
     private final AuthorService authorService;
 
     @GetMapping
-    public List<Author> getAuthors() {
-        return authorService.getAuthors();
+    public Page<AuthorDTO> getAuthors(@RequestParam int page, @RequestParam int pageSize) {
+        return authorService.getAuthors(page, pageSize);
     }
 
 }

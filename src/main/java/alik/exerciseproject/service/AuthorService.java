@@ -6,6 +6,8 @@ import alik.exerciseproject.dto.BookDTO;
 import alik.exerciseproject.model.Author;
 import alik.exerciseproject.repo.AuthorRepo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,8 +36,9 @@ public class AuthorService {
                 bookDTOs
         );
     }
-   public List<Author> getAuthors() {
-       return authorRepo.findAll();
+   public Page<AuthorDTO> getAuthors(int page, int pageSize) {
+        Page<Author> authors = authorRepo.findAuthors(PageRequest.of(page, pageSize));
+       return authors.map(this::mapAuthor);
    }
 
     public AuthorDTO getAuthorById(long id) {
