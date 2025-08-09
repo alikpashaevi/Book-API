@@ -1,15 +1,13 @@
 package alik.exerciseproject.dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ReviewForBook {
-    private long id;
+public class ReviewRequest {
     private String reviewerName;
     private int rating;
     private String comment;
-    private String book;
+    private long bookId;
 }

@@ -20,13 +20,17 @@ public class BookService {
     private final AuthorService authorService;
 
 
-    public List<Book> getAllBooks() {
-        return bookRepo.findAll();
+    public List<BookDTO> getAllBooks() {
+        return bookRepo.findBooks();
     }
 
-    public BookDTO getBookById(int id) {
+    public BookDTO getBookById(long id) {
         Book book = bookRepo.findById(id).get();
         return MapBook.mapBook(book);
+    }
+
+    public Book findBook(long id) {
+        return bookRepo.findById(id).get();
     }
 
     public void addBook(BookRequest request) {

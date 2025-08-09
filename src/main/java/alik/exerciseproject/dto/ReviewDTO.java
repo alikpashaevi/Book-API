@@ -7,7 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class ReviewDTO {
     private int id;
-    private String reviewName;
+    private String reviewerName;
     private int rating;
     private String comment;
     private BookDTO book;

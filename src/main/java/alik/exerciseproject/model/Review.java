@@ -16,8 +16,8 @@ public class Review {
     @GeneratedValue(generator = "review_seq_gen", strategy = GenerationType.SEQUENCE)
     private long id;
 
-    @Column(name = "review_name")
-    private String reviewName;
+    @Column(name = "reviewer_name")
+    private String reviewerName;
 
     @Column(name = "rating")
     private int rating;

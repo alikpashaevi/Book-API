@@ -1,5 +1,6 @@
 package alik.exerciseproject.controller;
 
+import alik.exerciseproject.dto.BookDTO;
 import alik.exerciseproject.dto.BookRequest;
 import alik.exerciseproject.model.Book;
 import alik.exerciseproject.service.BookService;
@@ -19,7 +20,7 @@ public class BookController {
     private final BookService bookService;
 
     @GetMapping
-    public List<Book> getAllBooks() {
+    public List<BookDTO> getAllBooks() {
         return bookService.getAllBooks();
     }
 
