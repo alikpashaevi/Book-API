@@ -2,6 +2,7 @@ package alik.exerciseproject.service;
 
 import alik.exerciseproject.components.MapBook;
 import alik.exerciseproject.dto.AuthorDTO;
+import alik.exerciseproject.dto.AuthorRequest;
 import alik.exerciseproject.dto.BookDTO;
 import alik.exerciseproject.model.Author;
 import alik.exerciseproject.repo.AuthorRepo;
@@ -48,6 +49,30 @@ public class AuthorService {
 
     public Author findAuthor(long id) {
         return authorRepo.findById(id).get();
+    }
+
+    public void addAuthor(AuthorRequest request) {
+        Author author = new Author();
+        author.setName(request.getName());
+        author.setBio(request.getBio());
+        authorRepo.save(author);
+    }
+
+    public void updateAuthor(AuthorRequest request, long id) {
+        Author author = authorRepo.findById(id).orElse(null);
+        if (author != null) {
+            author.setName(request.getName());
+            author.setBio(request.getBio());
+
+            authorRepo.save(author);
+        }
+
+
+    }
+
+    public void deleteAuthor(long id) {
+        Author author = authorRepo.findById(id).get();
+        authorRepo.delete(author);
     }
 
 
